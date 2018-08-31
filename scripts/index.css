@@ -1,0 +1,45 @@
+body,text {
+	font-family: Roboto Slab, serif;
+	font-weight:300;
+	font-size:20px;
+}
+
+.title {
+	font-size:150%;
+	text-anchor:middle;
+}
+
+b, .bold {
+	font-family: Roboto, sans-serif;
+	font-weight:900;
+}
+
+.footnote {
+	font-weight:100;
+}
+
+svg {
+	isolation:isolate;
+}
+
+.wrapper{
+	cursor:pointer;
+}
+
+.axis, .error-bar {
+	fill: none;
+	stroke-miterlimit: 10;
+}
+
+.axis {
+	stroke: silver;
+}
+
+.error-bar {
+	display:none;
+	stroke-width: 1px;
+}
+
+.dot {
+	fill: #ed1c24;
+}
