@@ -1,11 +1,11 @@
 body,text {
 	font-family: Roboto Slab, serif;
 	font-weight:300;
-	font-size:20px;
+	font-size:24px;
 }
 
 .title {
-	font-size:150%;
+	font-size:125%;
 	text-anchor:middle;
 }
 
@@ -16,6 +16,10 @@ b, .bold {
 
 .footnote {
 	font-weight:100;
+}
+
+.small {
+	font-size:90%;
 }
 
 svg {
