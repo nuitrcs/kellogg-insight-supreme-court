@@ -133,6 +133,7 @@ tilde.drawFace = function(name) {
 		.attr('height',1)
 		.attr('preserveAspectRatio','none')
 		.attr('href',"scripts/images/"+name+".jpg")
+		
 	var rect = d3.select("#"+name)
 		.append('rect')
 		.attr('x',function(d,i){
