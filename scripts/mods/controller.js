@@ -42,6 +42,7 @@ tilde.init = function() {
 						return 'translate(0,'+y+')'
 					})
 				if (!d.name) d.name = d.id
+				return 'none'
 				if (d.appointed === 'r'){
 					return '#E05669'
 				}
@@ -96,11 +97,22 @@ tilde.init = function() {
 		.style('stroke','#323232')
 		.style('opacity','0.3')
 	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
+	d3.select('#sort_method')
+		.on('click',tilde.swapSorting)
+}
+tilde.swapSorting = function() {
+	if (this.innerHTML === 'By Value') {
+		this.innerHTML = 'Chronologically'
+		tilde.moveChrono()
+	} else {
+		this.innerHTML = 'By Value'
+		tilde.moveValue()
+	}
 }
 tilde.moveChrono = function() {
 	d3.selectAll('.wrapper')
 		.transition()
-		.duration(300)
+		.duration(500)
 		.delay(function(d,i){
 			return i*15
 		})
@@ -111,7 +123,7 @@ tilde.moveChrono = function() {
 tilde.moveValue = function() {
 	d3.selectAll('.wrapper')
 		.transition()
-		.duration(300)
+		.duration(500)
 		.delay(function(d,i){
 			return i*15
 		})
@@ -162,49 +174,51 @@ tilde.mouseover = function(ele,d,i) {
 	d3.select(ele).select('.dot')
 		.transition('mouse')
 		.ease(d3.easeElastic)
-		.duration(500)
-		.attr('r',35)
-	d3.select(ele).select('.error-bar')
-		.style('stroke-width',3)
+		.duration(1000)
+		.attr('r',50)
 	d3.select(ele).select('text')
 		.classed('bold',true)
 	d3.select(ele).select('rect')
 		.transition('mouse')
 		.ease(d3.easeElastic)
-		.duration(500)
+		.duration(1000)
 		.attr('x',function(d,i){
-			return +d3.select(ele).select('.dot').attr('cx') - 35
+			return +d3.select(ele).select('.dot').attr('cx') - 50
 		})
 		.attr('y',function(d,i){
-			return +d3.select(ele).select('.dot').attr('cy') - 35
+			return +d3.select(ele).select('.dot').attr('cy') - 50
 		})
 		.attr('width',function(d,i){
-			return 70
+			return 100
 		})
 		.attr('height',function(d,i){
-			return 70
+			return 100
 		})
 		.attr('ry',function(){
-			return 35
+			return 50
 		})
 		.attr('rx',function(){
-			return 35
+			return 50
 		})
+}
+tilde.easeDown = function(x) {
+	x = d3.easeElastic(x)
+	if (x < 0) x=0
+	else if (x > 1) x = (x+1)/2
+	return x
 }
 tilde.mouseout = function(ele,d,i) {
 	d3.select(ele).select('.dot')
 		.transition('mouse')
-		.ease(d3.easeElastic)
-		.duration(500)
+		.ease(tilde.easeDown)
+		.duration(1000)
 		.attr('r',12)
-	d3.select(ele).select('.error-bar')
-		.style('stroke-width',3)
 	d3.select(ele).select('text')
 		.classed('bold',false)
 	d3.select(ele).select('rect')
 		.transition('mouse')
-		.ease(d3.easeElastic)
-		.duration(500)
+		.ease(tilde.easeDown)
+		.duration(1000)
 		.attr('x',function(d,i){
 			return +d3.select(ele).select('.dot').attr('cx') - 12
 		})

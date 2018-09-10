@@ -38,11 +38,21 @@ svg {
 .axis {
 	stroke: silver;
 }
+
+.center {
+	stroke-width:2px;
+}
+
 .error-bar {
 	display:none;
 	stroke-width: 1px;
 }
 
 .dot {
-	fill: #ed1c24;
+	fill: none;
+}
+
+#sort_method:hover {
+	font-weight: 300;
+	cursor: pointer;
 }
