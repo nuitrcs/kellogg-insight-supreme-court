@@ -95,7 +95,7 @@ tilde.init = function() {
 		.style('isolation','isolate')
 		.style('stroke','#323232')
 		.style('opacity','0.3')
-	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.8)-extracted_values.invert(-0.4))
+	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
 }
 tilde.moveChrono = function() {
 	d3.selectAll('.wrapper')

@@ -217,3 +217,186 @@ tilde.data = [
 		appointed:'d'
 	}
 ]
+
+tilde.supplemental = {
+   "Gorsuch": {
+      "Name": "Neil Gorsuch",
+      "Years": "2017–present",
+      "President": "Donald Trump"
+   },
+   "Kagan": {
+      "Name": "Elena Kagan",
+      "Years": "2010–present",
+      "President": "Barack Obama"
+   },
+   "Sotomayor": {
+      "Name": "Sonia Sotomayor",
+      "Years": "2009–present",
+      "President": "Barack Obama"
+   },
+   "Alito": {
+      "Name": "Samuel Alito",
+      "Years": "2006–present",
+      "President": "George W. Bush"
+   },
+   "Roberts": {
+      "Name": "John Roberts",
+      "Years": "2005–present",
+      "President": "George W. Bush"
+   },
+   "Breyer": {
+      "Name": "Stephen Breyer",
+      "Years": "1994–present",
+      "President": "Bill Clinton"
+   },
+   "Ginsburg": {
+      "Name": "Ruth Bader Ginsburg",
+      "Years": "1993–present",
+      "President": "Bill Clinton"
+   },
+   "Thomas": {
+      "Name": "Clarence Thomas",
+      "Years": "1991–present",
+      "President": "George H.W. Bush"
+   },
+   "Souter": {
+      "Name": "David Souter",
+      "Years": "1990–2009",
+      "President": "George H.W. Bush"
+   },
+   "Kennedy": {
+      "Name": "Anthony Kennedy",
+      "Years": "1988–2018",
+      "President": "Ronald Reagan"
+   },
+   "Scalia": {
+      "Name": "Antonin Scalia",
+      "Years": "1986–2016",
+      "President": "Ronald Reagan"
+   },
+   "O_Connor": {
+      "Name": "Sandra Day O'Connor",
+      "Years": "1981–2006",
+      "President": "Ronald Reagan"
+   },
+   "Stevens": {
+      "Name": "John Paul Stevens",
+      "Years": "1975–2010",
+      "President": "Gerald Ford"
+   },
+   "Rehnquist": {
+      "Name": "William Rehnquist",
+      "Years": "1972–2005",
+      "President": "Richard Nixon"
+   },
+   "Powell": {
+      "Name": "Lewis Powell",
+      "Years": "1972–1987",
+      "President": "Richard Nixon"
+   },
+   "Blackmun": {
+      "Name": "Harry Blackmun",
+      "Years": "1970–1994",
+      "President": "Richard Nixon"
+   },
+   "Burger": {
+      "Name": "Warren Burger",
+      "Years": "1969–1986",
+      "President": "Richard Nixon"
+   },
+   "Marshall": {
+      "Name": "Thurgood Marshall",
+      "Years": "1967–1991",
+      "President": "Lyndon B. Johnson"
+   },
+   "Fortas": {
+      "Name": "Abe Fortas",
+      "Years": "1965–1969",
+      "President": "Lyndon B. Johnson"
+   },
+   "Goldberg": {
+      "Name": "Arthur Goldberg",
+      "Years": "1962–1965",
+      "President": "John F. Kennedy"
+   },
+   "White": {
+      "Name": "Byron White",
+      "Years": "1962–1993",
+      "President": "John F. Kennedy"
+   },
+   "Stewart": {
+      "Name": "Potter Stewart",
+      "Years": "1958–1981",
+      "President": "Dwight D. Eisenhower"
+   },
+   "Whittaker": {
+      "Name": "Charles Evans Whittaker",
+      "Years": "1957–1962",
+      "President": "Dwight D. Eisenhower"
+   },
+   "Brennan": {
+      "Name": "William J. Brennan",
+      "Years": "1956–1990",
+      "President": "Dwight D. Eisenhower"
+   },
+   "Harlan": {
+      "Name": "John Marshall Harlan II",
+      "Years": "1955–1971",
+      "President": "Dwight D. Eisenhower"
+   },
+   "Warren": {
+      "Name": "Earl Warren",
+      "Years": "1953–1969",
+      "President": "Dwight D. Eisenhower"
+   },
+   "Minton": {
+      "Name": "Sherman Minton",
+      "Years": "1949–1956",
+      "President": "Harry S. Truman"
+   },
+   "Clark": {
+      "Name": "Tom Clark",
+      "Years": "1949–1967",
+      "President": "Harry S. Truman"
+   },
+   "Vinson": {
+      "Name": "Fred Vinson",
+      "Years": "1946–1953",
+      "President": "Harry S. Truman"
+   },
+   "Burton": {
+      "Name": "Harold Hitz Burton",
+      "Years": "1945–1958",
+      "President": "Harry S. Truman"
+   },
+   "Rutledge": {
+      "Name": "Wiley Blount Rutledge",
+      "Years": "1943–1949",
+      "President": "Franklin D. Roosevelt"
+   },
+   "Jackson": {
+      "Name": "Robert H. Jackson",
+      "Years": "1941–1954",
+      "President": "Franklin D. Roosevelt"
+   },
+   "Murphy": {
+      "Name": "Frank Murphy",
+      "Years": "1940–1949",
+      "President": "Franklin D. Roosevelt"
+   },
+   "Douglas": {
+      "Name": "William O. Douglas",
+      "Years": "1939–1975",
+      "President": "Franklin D. Roosevelt"
+   },
+   "Frankfurter": {
+      "Name": "Felix Frankfurter",
+      "Years": "1939–1962",
+      "President": "Franklin D. Roosevelt"
+   },
+   "Reed": {
+      "Name": "Stanley Forman Reed",
+      "Years": "1938–1958",
+      "President": "Franklin D. Roosevelt"
+   }
+}
