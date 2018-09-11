@@ -5,7 +5,7 @@ body,text {
 }
 
 .title {
-	font-size:118%;
+	font-size:140%;
 	text-anchor:middle;
 }
 
@@ -53,6 +53,8 @@ svg {
 }
 
 #sort_method:hover {
-	font-weight: 300;
+	font-family: Roboto, sans-serif;
+	font-weight: 900;
+	font-size:110%;
 	cursor: pointer;
 }

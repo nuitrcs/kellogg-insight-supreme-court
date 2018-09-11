@@ -96,16 +96,17 @@ tilde.init = function() {
 		.style('isolation','isolate')
 		.style('stroke','#323232')
 		.style('opacity','0.3')
-	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
+	d3.select('#subhead').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
+	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.8)-extracted_values.invert(-0.4))
 	d3.select('#sort_method')
 		.on('click',tilde.swapSorting)
 }
 tilde.swapSorting = function() {
-	if (this.innerHTML === 'By Value') {
+	if (this.innerHTML === 'By change') {
 		this.innerHTML = 'Chronologically'
 		tilde.moveChrono()
 	} else {
-		this.innerHTML = 'By Value'
+		this.innerHTML = 'By change'
 		tilde.moveValue()
 	}
 }
