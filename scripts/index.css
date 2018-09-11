@@ -15,7 +15,7 @@ b, .bold {
 }
 
 .footnote {
-	font-weight:100;
+	font-style:italic;
 }
 
 .small {
