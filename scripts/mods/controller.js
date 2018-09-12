@@ -1,4 +1,4 @@
-var extracted_values = d3.scaleLinear()
+tilde.extracted_values = d3.scaleLinear()
 	.range([-0.4,0,0.4,0.8]),
 	y_position = d3.scaleLinear(),
 	x_domain = [],
@@ -10,7 +10,7 @@ tilde.init = function() {
 			var x = +d3.select(this).attr('x1')
 			x_domain.unshift(x)
 		})
-	extracted_values.domain(x_domain)
+	tilde.extracted_values.domain(x_domain)
 	tilde.data.forEach(function(d){
 		var parent = d3.select('#'+d.id)
 			.attr('class','wrapper')
@@ -34,7 +34,7 @@ tilde.init = function() {
 				var x = +d3.select(this).attr('cx')
 				var y = +d3.select(this).attr('cy')
 				d.chrono = y
-				d.value = extracted_values(x)
+				d.value = tilde.extracted_values(x)
 				if (y < y_range[0]) y_range[0] = y
 				if (y > y_range[1]) y_range[1] = y
 				d3.select(this.parentNode)
@@ -58,8 +58,8 @@ tilde.init = function() {
 			.style('stroke',function(d,i){
 				var x1 = +d3.select(this).attr('x1'),
 					x2 = +d3.select(this).attr('x2')
-				d.min = extracted_values(x1)
-				d.max = extracted_values(x2)
+				d.min = tilde.extracted_values(x1)
+				d.max = tilde.extracted_values(x2)
 				if (d.appointed === 'r'){
 					return '#E05669'
 				}
@@ -96,8 +96,8 @@ tilde.init = function() {
 		.style('isolation','isolate')
 		.style('stroke','#323232')
 		.style('opacity','0.3')
-	d3.select('#subhead').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
-	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
+	d3.select('#subhead').call(tilde.wrapText,tilde.extracted_values.invert(0.95)-tilde.extracted_values.invert(-0.4))
+	d3.select('#footnote').call(tilde.wrapText,tilde.extracted_values.invert(0.95)-tilde.extracted_values.invert(-0.4))
 	d3.select('#sort_method')
 		.on('click',tilde.swapSorting)
 	tilde.sorting = 'By change'
@@ -355,7 +355,6 @@ tilde.mouseout = function(ele,d,i) {
 		.style("display","none")
 }
 tilde.wrapText = function(text, width) {
-	console.log(width)
   text.each(function() {
     var text = d3.select(this),
         words = text.text().split(/\s+/).reverse(),
