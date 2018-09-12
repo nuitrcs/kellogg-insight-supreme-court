@@ -370,6 +370,10 @@ tilde.wrapText = function(text, width) {
       line.push(word);
       tspan.text(line.join(" "));
       if (tspan.node().getComputedTextLength() > width) {
+      	console.log('getBBox(): ' + tspan.node().getBBox().width)
+      	console.log('computedTextLength: ' + tspan.node().getComputedTextLength())
+      	console.log('Target: ' + width)
+      	console.log('~~~~')
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
@@ -381,7 +385,4 @@ tilde.wrapText = function(text, width) {
 tilde.tooltip = d3.select("#tooltip");
 tilde.tooltip_fill = tilde.tooltip.append('path').attr('id','tooltip_fill')
 tilde.info = tilde.tooltip.append('text').attr('id','info')
-tilde.moveTooltip = function(d) {
-	
-}
 tilde.init()
