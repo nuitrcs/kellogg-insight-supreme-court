@@ -245,13 +245,13 @@ tilde.mouseover = function(ele,d,i) {
 	tilde.info
 		.append("tspan")
 		.classed('bold',true)
-		.attr('y',-font_size*.75)
+		.attr('y',-font_size*.70-padding)
 		.attr('x',x_position)
 		.text(d.fname)
 
 	tilde.info
 		.append("tspan")
-		.attr('y',font_size*.25)
+		.attr('y',font_size*.3)
 		.attr('x',x_position)
 		.text('('+supplemental.Years+'), ')
 		.append("tspan")
@@ -260,7 +260,7 @@ tilde.mouseover = function(ele,d,i) {
 
 	tilde.info
 		.append("tspan")
-		.attr('y',font_size*1.25)
+		.attr('y',font_size*1.3+padding)
 		.attr('x',x_position)
 		.text(supplemental.President+' ('+d.appointed+')')
 
@@ -294,6 +294,12 @@ tilde.mouseover = function(ele,d,i) {
 			else rotate += 0
 			rotate += ')'
 			return rotate
+		})
+		.style('fill',function(){
+			if (d.appointed === 'Republican') {
+				return '#5A1414'
+			}
+			return '#14145A'
 		})
 
 	var translate = tilde.tooltip.attr('transform')
