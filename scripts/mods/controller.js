@@ -355,6 +355,7 @@ tilde.mouseout = function(ele,d,i) {
 		.style("display","none")
 }
 tilde.wrapText = function(text, width) {
+	console.log(width)
   text.each(function() {
     var text = d3.select(this),
         words = text.text().split(/\s+/).reverse(),
