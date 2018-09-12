@@ -175,7 +175,6 @@ tilde.mouseover = function(ele,d,i) {
 	var duration = 1000
 	var place_card_left = true
 	var source = d3.select(ele).select('.dot')
-	console.log(d.value)
 	if (d.value < 0.2) {
 		place_card_left = false
 	}
@@ -231,7 +230,6 @@ tilde.mouseover = function(ele,d,i) {
 	tilde.info
 		.attr('text-anchor',function(){
 			if (place_card_left) {
-				console.log('placing to the left')
 				return 'end'
 			}
 			return 'start'
