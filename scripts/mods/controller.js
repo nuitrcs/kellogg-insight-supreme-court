@@ -100,13 +100,14 @@ tilde.init = function() {
 	d3.select('#footnote').call(tilde.wrapText,extracted_values.invert(0.95)-extracted_values.invert(-0.4))
 	d3.select('#sort_method')
 		.on('click',tilde.swapSorting)
+	tilde.sorting = 'By change'
 }
 tilde.swapSorting = function() {
-	if (this.innerHTML === 'By change') {
-		this.innerHTML = 'Chronologically'
+	if (tilde.sorting === 'By change') {
+		tilde.sorting = this.innerHTML = 'Chronologically'
 		tilde.moveChrono()
 	} else {
-		this.innerHTML = 'By change'
+		tilde.sorting = this.innerHTML = 'By change'
 		tilde.moveValue()
 	}
 }
@@ -171,23 +172,33 @@ tilde.drawFace = function(name) {
 		.attr('fill','url(#pattern_'+name+')')
 }
 tilde.mouseover = function(ele,d,i) {
+	var duration = 1000
+	var place_card_left = true
+	var source = d3.select(ele).select('.dot')
+	console.log(d.value)
+	if (d.value < 0.2) {
+		place_card_left = false
+	}
+
+	tilde.tooltip.moveToFront()
 	d3.select(ele).moveToFront()
+	
 	d3.select(ele).select('.dot')
 		.transition('mouse')
 		.ease(d3.easeElastic)
-		.duration(1000)
+		.duration(duration)
 		.attr('r',50)
 	d3.select(ele).select('text')
 		.classed('bold',true)
 	d3.select(ele).select('rect')
 		.transition('mouse')
 		.ease(d3.easeElastic)
-		.duration(1000)
+		.duration(duration)
 		.attr('x',function(d,i){
-			return +d3.select(ele).select('.dot').attr('cx') - 50
+			return +source.attr('cx') - 50
 		})
 		.attr('y',function(d,i){
-			return +d3.select(ele).select('.dot').attr('cy') - 50
+			return +source.attr('cy') - 50
 		})
 		.attr('width',function(d,i){
 			return 100
@@ -200,6 +211,104 @@ tilde.mouseover = function(ele,d,i) {
 		})
 		.attr('rx',function(){
 			return 50
+		})
+
+	var supplemental = tilde.supplemental[d.id]
+	var font_size = parseFloat(d3.select("#subhead").style('font-size'))
+	tilde.tooltip
+		.attr('transform',function(){
+			var translate = 'translate('+source.attr('cx')+','
+			if (tilde.sorting === 'By change') translate += y_position(d.rank)
+			else translate += d.chrono
+			translate +=')'
+			return translate
+		})
+		.style("display", "inline-block")
+
+	tilde.info
+		.selectAll("tspan").remove()
+
+	tilde.info
+		.attr('text-anchor',function(){
+			if (place_card_left) {
+				console.log('placing to the left')
+				return 'end'
+			}
+			return 'start'
+		})
+	var x_adjust = 50
+	var padding = 5
+	x_adjust += padding
+	x_position = x_adjust+padding*2
+	if (place_card_left) x_position = -x_position
+
+	tilde.info
+		.append("tspan")
+		.classed('bold',true)
+		.attr('y',-font_size*.75)
+		.attr('x',x_position)
+		.text(d.fname)
+
+	tilde.info
+		.append("tspan")
+		.attr('y',font_size*.25)
+		.attr('x',x_position)
+		.text('('+supplemental.Years+'), ')
+		.append("tspan")
+		.classed('italic',true)
+		.text('Appointed by:')
+
+	tilde.info
+		.append("tspan")
+		.attr('y',font_size*1.25)
+		.attr('x',x_position)
+		.text(supplemental.President+' ('+d.appointed+')')
+
+	var w = tilde.info.node().getBBox().width,
+		h = Math.abs(x_adjust),
+		cx = 0,
+		cy = 0
+
+	tilde.tooltip_fill
+		.attr('d',function(){
+			var d = 'M '
+			d += cx + ' '			//x1
+			d += cy - h + ' L '		//y1
+			d += cx + h + padding*4 + w + ' '	//x2
+			d += cy - h + ' L '		//y2
+			d += cx + h + padding*4 + w + ' '	//x3
+			d += cy + h + ' L '		//y3
+			d += cx + ' '			//x4
+			d += cy + h 			//y4
+			d += ' A '+h+' '+h 		//arc command, rx/ry
+			d += ' 0 ' 				//x-axis-rotation
+			d += ' 0 ' 				//large-arc-flag
+			d += ' 0 ' 				//sweep-flag
+			d += cx + ' '			//x5
+			d += cy - h + ' Z'		//y5
+			return d
+		})
+		.attr('transform',function(){
+			var rotate = 'rotate('
+			if (place_card_left) rotate += '180,'+cx+','+source.attr('cy')
+			else rotate += 0
+			rotate += ')'
+			return rotate
+		})
+
+	var translate = tilde.tooltip.attr('transform')
+	tilde.tooltip
+		.transition('mouse')
+		.duration(0)
+		.attr('transform',function(){
+			return translate + 'scale(1,'+24/100+')'
+		})
+	tilde.tooltip
+		.transition('mouse')
+		.duration(duration)
+		.ease(d3.easeElastic)
+		.attr('transform',function(){
+			return translate + 'scale(1,1)'
 		})
 }
 tilde.easeDown = function(x) {
@@ -238,6 +347,8 @@ tilde.mouseout = function(ele,d,i) {
 		.attr('rx',function(){
 			return 12
 		})
+	tilde.tooltip
+		.style("display","none")
 }
 tilde.wrapText = function(text, width) {
   text.each(function() {
@@ -263,5 +374,10 @@ tilde.wrapText = function(text, width) {
     }
   });
 }
-
+tilde.tooltip = d3.select("#tooltip");
+tilde.tooltip_fill = tilde.tooltip.append('path').attr('id','tooltip_fill')
+tilde.info = tilde.tooltip.append('text').attr('id','info')
+tilde.moveTooltip = function(d) {
+	
+}
 tilde.init()
