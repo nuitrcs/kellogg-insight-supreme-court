@@ -370,10 +370,6 @@ tilde.wrapText = function(text, width) {
       line.push(word);
       tspan.text(line.join(" "));
       if (tspan.node().getComputedTextLength() > width) {
-      	console.log('getBBox(): ' + tspan.node().getBBox().width)
-      	console.log('computedTextLength: ' + tspan.node().getComputedTextLength())
-      	console.log('Target: ' + width)
-      	console.log('~~~~')
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
