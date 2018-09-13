@@ -135,18 +135,19 @@ tilde.moveValue = function() {
 }
 tilde.drawFace = function(name) {
 	var circle_to_replace = d3.select("#"+name+" circle")
-	d3.select("#defs").append("pattern")
+	var pattern = d3.select("#defs").append("pattern")
 		.attr('id','pattern_'+name)
 		.attr('patternContentUnits','objectBoundingBox')
 		.attr('width','100%')
 		.attr('height','100%')
 		.attr('x',"0%")
 		.attr('y',"0%")
-		.append("image")
+		
+	pattern.append("image")
 		.attr('width',1)
 		.attr('height',1)
 		.attr('preserveAspectRatio','none')
-		.attr('href',"scripts/images/"+name+".jpg")
+		.attr('xlink:href',"scripts/images/"+name+".jpg")
 		
 	var rect = d3.select("#"+name)
 		.append('rect')
@@ -169,7 +170,7 @@ tilde.drawFace = function(name) {
 			return 12
 		})
 		.attr('id','rect_'+name)
-		.attr('fill','url(#pattern_'+name+')')
+		.attr('fill',"url("+ window.location.href + "#pattern_"+name+')')
 }
 tilde.mouseover = function(ele,d,i) {
 	var duration = 1000
