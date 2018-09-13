@@ -295,7 +295,7 @@ tilde.mouseover = function(ele,d,i) {
 		})
 		.style('fill',function(){
 			if (d.appointed === 'Republican') {
-				return '#5A1414'
+				return '#6E0000'
 			}
 			return '#14145A'
 		})
